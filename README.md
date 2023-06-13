@@ -1,6 +1,6 @@
-# Frontend Mentor - Multi-step form solution
+# Frontend Mentor - Newsletter sign-up form with success message solution
 
-This is a solution to the [Multi-step form challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ). Frontend Mentor challenges help you improve your coding skills by building realistic projects. 
+This is a solution to the [Newsletter sign-up form with success message challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/newsletter-signup-form-with-success-message-3FC1AZbNrv). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
 ## Table of contents
 
@@ -18,35 +18,37 @@ This is a solution to the [Multi-step form challenge on Frontend Mentor](https:/
 
 Users should be able to:
 
-- Complete each step of the sequence
-- Go back to a previous step to update their selections
-- See a summary of their selections on the final step and confirm their order
+- Add their email and submit the form
+- See a success message with their email after successfully submitting the form
+- See form validation messages if:
+  - The field is left empty
+  - The email address is not formatted correctly
 - View the optimal layout for the interface depending on their device's screen size
 - See hover and focus states for all interactive elements on the page
-- Receive form validation messages if:
-  - A field has been missed
-  - The email address is not formatted correctly
-  - A step is submitted, but no selection has been made
 
 ### Links
 
-- [Go to solution](#) (Not added yet)
-- [Go to live site](https://hydrae-soft.github.io/Multi-step-form/)
+- [Go to solution](#)
+- [Go to live site](https://hydrae-soft.github.io/Newsletter-sign-up-form-with-success-message/)
 
 ## My process
 
 ### Built with
-
+- Vite
+- React
+- TypeScript
+- SASS
+- SWC
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
 - CSS Grid
 - Mobile-first workflow
-- TypeScript
 
 ### What I learned
 
-- Not added yet.
+- Start Vite + React projects manually (from Vanilla Vite project).
+- Using media queries with React useState.
 
 ## Author
 

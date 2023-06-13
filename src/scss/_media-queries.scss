@@ -1,0 +1,42 @@
+@media (width >= 768px) {
+  #root {
+    background-color: $dark-slate-grey;
+  }
+  section {
+    &.subscription-section {
+      display: flex;
+      flex-direction: row-reverse;
+      width: 768px;
+      height: 500px;
+      padding: 20px;
+      .cover {
+        background: url(../assets/images/illustration-sign-up-desktop.svg);
+        width: 500px;
+        height: 470px;
+        background-size: cover;
+        border-radius: 15px;
+        & + * {
+          padding: 30px;
+        }
+      }
+    }
+    &.finish-section {
+      width: 400px;
+      height: 400px;
+      padding: 50px;
+      border-radius: 30px;
+      &.flex-container {
+        gap: 30px;
+      }
+      div.flex-container {
+        h1 {
+          font-size: 2.5rem;
+        }
+        img {
+          max-width: 48px;
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}

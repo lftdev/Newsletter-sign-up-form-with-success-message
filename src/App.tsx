@@ -1,4 +1,4 @@
-import { Cover } from './components/Cover'
+import Cover from './components/Cover'
 import { FormEvent, useState } from 'react'
 import './scss/style.scss'
 function App() {
@@ -10,7 +10,11 @@ function App() {
   }
   const [email, setEmail] = useState('')
   const [invalid, setInvalid] = useState(false)
-  const [canProceed,  proceed] = useState(true)
+  const [canProceed,  proceed] = useState(false)
+  const [breakpoint, setBreakpoint] = useState(window.innerWidth < 768? 'sm' : 'md')
+  window.matchMedia('(min-width: 768px)').addEventListener('change', (event) => {
+    setBreakpoint(event.matches? 'md' : 'sm')
+  })
 
   const handleInput = (event: FormEvent) => {
     const value = (event.target as HTMLInputElement).value
@@ -32,9 +36,10 @@ function App() {
   }
   return (
     <>
-      {!canProceed && (<section className='subscription-section'>
-        <Cover/>
-        <div className='flex-container benefits'>
+      {!canProceed && (
+      <section className='subscription-section'>
+        <Cover breakpoint={breakpoint}/>
+        <div className='benefits flex-container'>
           <h1>Stay updated!</h1>
           <p>Join 60,000+ product managers receiving monthly updates on:</p>
           <ul className='flex-container'>
@@ -42,23 +47,24 @@ function App() {
             <li>Measuring to ensure updates are a sucess</li>
             <li>And much more!</li>
           </ul>
+          <form className='flex-container newsletter-form' onSubmit={handleSubmit}>
+            <div className='flex-container'>
+              <label htmlFor='email'>Email address</label>
+              <p className={`invalid-input${invalid? ' reveal' : ''}`}>Valid email required</p>
+            </div>
+            <input id='email' type='email' placeholder='email@company.com' className='text-field' onInput={handleInput}/>
+            <input type='submit' value='Subscribe to monthly newsletter' />
+          </form>
         </div>
-        <form className='flex-container newsletter-form' onSubmit={handleSubmit}>
-          <div className='flex-container'>
-            <label htmlFor='email'>Email address</label>
-            <p className={`invalid-input${invalid? ' reveal' : ''}`}>Valid email required</p>
-          </div>
-          <input id='email' type='email' placeholder='email@company.com' className='text-field' onInput={handleInput}/>
-          <input type='submit' value='Subscribe to monthly newsletter' />
-        </form>
       </section>)}
-      {canProceed && (<section className="finish-section flex-container">
-        <div className='flex-container benefits'>
-          <img src='src/assets/images/icon-success.svg' alt="" />
+      {canProceed && (
+      <section className='finish-section flex-container'>
+        <div className='flex-container'>
+          <img src='src/assets/images/icon-success.svg' alt="Finished subscription icon"/>
           <h1>Thanks for subscribing!</h1>
           <p>A confirmation email has been sent to <strong>{email}</strong>. Please, open it and click the button inside to confirm your subscription.</p>
         </div>
-          <button onClick={handleClick} >Dismiss message</button>
+        <button onClick={handleClick} >Dismiss message</button>
       </section>)}
     </>
   )

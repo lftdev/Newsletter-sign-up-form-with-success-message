@@ -5,21 +5,20 @@
 }
 html, body {
   height: 100%;
-  background-color: $dark-slate-grey;
   color: $dark-slate-grey;
 }
 #root {
-  display: grid;
   height: 100%;
+  font-family: 'Roboto';
+  display: grid;
   place-items: center;
   grid-template-columns: 1fr;
-  font-family: 'Roboto';
 }
 .flex-container {
   display: flex;
   flex-direction: column;
 }
-button, 
+button,
 input[type='submit'] {
   background-color: $charcoal-grey;
   border-radius: 10px;
@@ -34,66 +33,79 @@ input[type='submit'] {
     background: linear-gradient(270deg, rgba(255,98,87,1) 41%, rgba(237,69,182,1) 100%);
   }
 }
+img {
+  max-width: 100%;
+}
 section {
   background-color: $white;
-  height: 100%;
+  border-radius: 15px;
+  &.subscription-section {
+    .cover {
+      background: url(../assets/images/illustration-sign-up-mobile.svg) center top no-repeat;
+      background-size: initial;
+      height: 284px;
+      border-radius: 0 0 15px 15px;
+      display: grid;
+      place-items: center;
+      & + * {
+        padding: 20px;
+      }
+    }
+    .benefits {
+      &.flex-container {
+        gap: 20px;
+      }
+      ul {
+        margin-left: 30px;
+        li {
+          list-style-image: url(../assets/images/icon-list.svg);
+        }
+        &.flex-container {
+          gap: 10px;
+        }
+      }
+      .newsletter-form {
+        padding: 20px;
+        &.flex-container {
+          gap: 20px;
+        }
+        div.flex-container {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        input {
+          padding: 15px;
+          border-radius: 10px;
+          font-family: inherit;
+          &.text-field {
+            border: 1px solid $grey;
+          }
+        }
+      }
+    }
+    p.invalid-input {
+      display: none;
+      color: $error;
+      font-weight: bold;
+      &.reveal {
+        display: block;
+      }
+    }
+  }
   &.finish-section {
     padding: 20px;
     &.flex-container {
       justify-content: space-between;
     }
-    img {
-      max-width: 48px;
-      margin-top: 40px;
+    div.flex-container {
+      gap: 20px;
+      h1 {
+        font-size: 2.5rem;
+      }
+      img {
+        max-width: 48px;
+        margin-top: 0;
+      }
     }
-  }
-}
-.cover {
-  background: url(../assets/images/illustration-sign-up-mobile.svg) center top no-repeat;
-  background-size: contain;
-  height: 284px;
-  border-radius: 0 0 35px 35px;
-  & + * {
-    padding: 20px;
-  }
-}
-.benefits {
-  &.flex-container {
-    gap: 20px;
-  }
-  ul {
-    margin-left: 20px;
-    li {
-      list-style-image: url(../assets/images/icon-list.svg);
-    }
-    &.flex-container {
-      gap: 10px;
-    }
-  }
-}
-.newsletter-form {
-  padding: 20px;
-  &.flex-container {
-    gap: 20px;
-  }
-  div.flex-container {
-    flex-direction: row;
-    justify-content: space-between;
-  }
-  input {
-    padding: 15px;
-    border-radius: 10px;
-    font-family: inherit;
-    &.text-field {
-      border: 1px solid $grey;
-    }
-  }
-}
-p.invalid-input {
-  display: none;
-  color: $error;
-  font-weight: bold;
-  &.reveal {
-    display: block;
   }
 }

@@ -2,6 +2,7 @@
   "name": "newsletter-sign-up-with-success-message-main",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://hydrae-soft.github.io/Newsletter-sign-up-form-with-success-message/",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -5,13 +5,15 @@
 }
 html, body {
   height: 100%;
-  background-color: $white;
+  background-color: $dark-slate-grey;
+  color: $dark-slate-grey;
 }
 #root {
   display: grid;
+  height: 100%;
+  place-items: center;
   grid-template-columns: 1fr;
   font-family: 'Roboto';
-  color: $dark-slate-grey;
 }
 .flex-container {
   display: flex;
@@ -20,6 +22,8 @@ html, body {
 button, 
 input[type='submit'] {
   background-color: $charcoal-grey;
+  border-radius: 10px;
+  padding: 15px;
   color: $white;
   font-weight: bold;
   border: none;
@@ -30,9 +34,23 @@ input[type='submit'] {
     background: linear-gradient(270deg, rgba(255,98,87,1) 41%, rgba(237,69,182,1) 100%);
   }
 }
+section {
+  background-color: $white;
+  height: 100%;
+  &.finish-section {
+    padding: 20px;
+    &.flex-container {
+      justify-content: space-between;
+    }
+    img {
+      max-width: 48px;
+      margin-top: 40px;
+    }
+  }
+}
 .cover {
   background: url(../assets/images/illustration-sign-up-mobile.svg) center top no-repeat;
-  background-size: cover;
+  background-size: contain;
   height: 284px;
   border-radius: 0 0 35px 35px;
   & + * {
@@ -78,7 +96,4 @@ p.invalid-input {
   &.reveal {
     display: block;
   }
-}
-img {
-  max-width: 100%;
 }

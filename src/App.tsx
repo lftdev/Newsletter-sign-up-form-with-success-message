@@ -10,23 +10,29 @@ function App() {
   }
   const [email, setEmail] = useState('')
   const [invalid, setInvalid] = useState(false)
+  const [canProceed,  proceed] = useState(true)
 
-  const handleSubmit = (event: FormEvent) => {
-    event.preventDefault()
-  }
   const handleInput = (event: FormEvent) => {
     const value = (event.target as HTMLInputElement).value
     if (value.match(REGEX.email) !== null) {
       setEmail(value)
       setInvalid(false)
     }
-    else {
+    else
       setInvalid(true)
-    }
+  }
+  const handleSubmit = (event: FormEvent) => {
+    event.preventDefault()
+    if (email !== '')
+      proceed(true)
+  }
+  const handleClick = () => {
+    setEmail('')
+    proceed(false)
   }
   return (
     <>
-      <section className='subscription-section'>
+      {!canProceed && (<section className='subscription-section'>
         <Cover/>
         <div className='flex-container benefits'>
           <h1>Stay updated!</h1>
@@ -45,18 +51,14 @@ function App() {
           <input id='email' type='email' placeholder='email@company.com' className='text-field' onInput={handleInput}/>
           <input type='submit' value='Subscribe to monthly newsletter' />
         </form>
-      </section>
-      {(email !== '') && (<section className="finish-section">
-        <Cover/>
+      </section>)}
+      {canProceed && (<section className="finish-section flex-container">
         <div className='flex-container benefits'>
-          <h1>Stay updated!</h1>
-          <p>Join 60,000+ product managers receiving monthly updates on:</p>
-          <ul className='flex-container'>
-            <li>Product discovery and building what matters</li>
-            <li>Measuring to ensure updates are a sucess</li>
-            <li>And much more!</li>
-          </ul>
+          <img src='src/assets/images/icon-success.svg' alt="" />
+          <h1>Thanks for subscribing!</h1>
+          <p>A confirmation email has been sent to <strong>{email}</strong>. Please, open it and click the button inside to confirm your subscription.</p>
         </div>
+          <button onClick={handleClick} >Dismiss message</button>
       </section>)}
     </>
   )
